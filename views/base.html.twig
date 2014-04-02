@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="/css/seometrics.css">
+	</head>
+
+	<body>
+		<div class="container">
+			<header class="jumbotron">
+				<h1>Pro Solutions SEOMetrics<sup>&copy;</sup></h1>
+				<p>Estadísticas para el sitio {{ app.domain | slice(7) }}</p>
+
+			</header>
+
+			<div class="container-fluid">
+				<nav>
+					<ul class="nav nav-tabs">
+						<li>
+							<a href="/">Inicio</a>
+						</li>
+						<li>
+							<a href="{{ path('alexa') }}">Alexa</a>
+						</li>
+						<li>
+							<a href="{{ path('google') }}">Google</a>
+						</li>
+						<li>
+							<a href="{{ path('mozscape') }}">Mozscape</a>
+						</li>
+						<li>
+							<a href="{{ path('ose') }}">Open Site Explorer</a>
+						</li>
+						<li>
+							<a href="{{ path('sistrix') }}">Sistrix</a>
+						</li>
+						<li>
+							<a href="{{ path('social_media') }}">Social Media</a>
+						</li>
+					</ul>
+				</nav>
+				<br />
+				<div class="container">
+				{% block content %}
+
+				{% endblock %}
+				</div>
+			</div>
+		</div>	
+		<footer>
+			<div class="container">
+				<p>Pro Solutions - SEOMetrics</p>
+			</div>
+		</footer>
+		<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+		{% block javascripts %}{% endblock %}
+	</body>
+</html>

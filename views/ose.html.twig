@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+
+<h2 class="page-header">Domain Authority</h2>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Resultado</th>
+			<th>Descripción</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{{ ose.domainAuthority.result }}{{ ose.domainAuthority.unit }}</td>				
+			<td>{{ ose.domainAuthority.descr }}</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2 class="page-header">Page Authority</h2>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Resultado</th>
+			<th>Descripción</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{{ ose.pageAuthority.result }}{{ ose.pageAuthority.unit }}</td>
+			<td>{{ ose.pageAuthority.descr }}</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2 class="page-header">Just-Discovered Links</h2>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Resultado</th>
+			<th>Descripción</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{{ ose.justDiscovered.result }}{{ ose.justDiscovered.unit }}</td>
+			<td>{{ ose.justDiscovered.descr }}</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2 class="page-header">Linking Root Domains</h2>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Resultado</th>
+			<th>Descripción</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{{ ose.linkingRootDomains.result }} {{ ose.linkingRootDomains.unit }}</td>
+			<td>{{ ose.linkingRootDomains.descr }}</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2 class="page-header">Total Links</h2>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Resultado</th>
+			<th>Descripción</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{{ ose.totalLinks.result }} {{ ose.totalLinks.unit }}</td>
+			<td>{{ ose.totalLinks.descr }}</td>
+		</tr>
+	</tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+	<h2>Información</h2>
+	<table class="table">
+		<tr>
+			<th class="text-center">PageRank</th>
+			<th class="text-center">Número de paginas indexadas</th>
+			<th class="text-center">Backlinks</th>
+		</tr>
+		<tr>
+			<td class="text-center">{{ pageRank }}</td>
+			<td class="text-center">{{ siteIndexTotal }}</td>
+			<td class="text-center">{{ backLinks }}</td>
+		</tr>
+	</table>
+
+	<h2>Pagespeed</h2>
+	{% if pageSpeed.score < 50 %}
+		{% set color = 'danger' %}
+	{% elseif pageSpeed.score >= 50 and pageSpeed.score < 80 %}
+		{% set color = 'warning' %}
+	{% elseif pageSpeed.score >= 80 %}	
+		{% set color = 'success' %}
+	{% endif %}
+	<br />
+	<h4>Score: <span class="label label-{{ color }}">{{ pageSpeed.score }}</span></h4>
+	
+	<h2>Posición en el SERP por palabra clave</h2>
+	<form id="serp-search" name="serp-search" class="form" role="form">
+		<div class="input-group">
+			<span class="input-group-addon">Keyword</span>
+			<input type="text" name="keyword" id="keyword" class="form-control" placeholder="naranjas" />
+			<span class="input-group-btn">
+				<button class="btn btn-default" type="button" id="search">
+					<span class="glyphicon glyphicon-search"></span>
+				</button>
+			</span>
+		</div>
+	</form>
+	<div class="resultados-serp" id="resultados-serp"></div>
+{% endblock %}
+
+{% block javascripts %}
+	<script type="text/template" id="serp-tpl">
+		<div class="well success">
+			<h4>#__position__ __headline__</h4>
+			<p><a target="_blank" href="__url__">__url__</a></p>
+		</div>
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#search").on('click', function(){
+				var keyword = $("#keyword").val();
+				$.ajax({
+					url: '{{ path('serp_search')}}',
+					type: 'get',	
+					data: 'keyword='+keyword,
+					success: function(json){
+						$("#resultados-serp").html('');
+						var found = 0;
+						$.each(json, function(index, serp){
+							if(serp.url.indexOf('{{ app.domain }}') != -1) {
+								var tpl = $("#serp-tpl").html();
+								tpl = tpl.replace(/__headline__/g, serp.headline);
+								tpl = tpl.replace(/__position__/g, serp.position);
+								tpl = tpl.replace(/__url__/g, serp.url);
+								$("#resultados-serp").append(tpl);
+								found++;
+							}
+						});
+
+						if(found == 0) {
+							$("#resultados-serp").prepend("<div class='alert alert-danger'><b>No se han encontrado resultados</b></div>");
+						} else{
+							$("#resultados-serp").prepend("<div class='alert alert-success'><b>" + found + " resultados encontrados</b></div>");
+						}
+						
+					},
+					error: function(jqxhr, error, status){
+						alert(status);
+					}
+				})
+			})
+		})
+	</script>
+{% endblock %}

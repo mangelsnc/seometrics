@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+	<h2 class="page-header">Google+</h2>
+	<p>Total de +1 <span class="label label-info">{{ google }}</span></p>
+
+	<h2 class="page-header">Facebook</h2>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Shares</th>
+				<th>Likes</th>
+				<th>Comentarios</th>
+				<th>CommentsBox Count</th>
+				<th>Click Count</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>{{ facebook.share_count }}</td>
+				<td>{{ facebook.like_count }}</td>
+				<td>{{ facebook.comment_count }}</td>
+				<td>{{ facebook.commentsbox_count }}</td>
+				<td>{{ facebook.click_count }}</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<h2 class="page-header">Twitter</h2>
+	<p>Menciones totales <span class="label label-info">{{ twitter }}</span></p>
+
+	<h2 class="page-header">Linkedin</h2>
+	<p>Total comparticiones <span class="label label-info">{{ linkedin }}</span></p>
+
+	<h2 class="page-header">Pinterest</h2>
+	<p>Total Comparticiones <span class="label label-info">{{ pinterest }}</span></p>
+{% endblock %}

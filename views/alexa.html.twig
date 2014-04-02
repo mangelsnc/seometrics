@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+	<h2>Rankings</h2>
+	<table class="table">
+		<tr>
+			<th class="text-center">Ranking Global</th>
+			<th class="text-center">Ranking Mensual</th>
+			<th class="text-center">Ranking Semanal</th>
+			<th class="text-center">Ranking Diario</th>
+			<th class="text-center">Ranking por País</th>
+		</tr>
+		<tr>
+			<td class="text-center">{{ rankings.global }}</td>
+			<td class="text-center">{{ rankings.monthly }}</td>
+			<td class="text-center">{{ rankings.weekly }}</td>
+			<td class="text-center">{{ rankings.daily }}</td>			
+			<td class="text-center">#{{ rankings.country.rank}} ({{ rankings.country.country }})
+		</tr>
+	</table>
+
+	<h2>Información</h2>
+	<table class="table">
+		<tr>
+			<th>Backlinks</th>
+			<th>Tiempo de carga</th>
+		</tr>
+		<tr>
+			<td>{{ rankings.backlinks }}</td>
+			<td>{{ rankings.pageloadtime }}</td>
+		</tr>
+	</table>
+
+	<h2>Gráficas</h2>
+{% if rankings.global > 10000 %}
+	<p>Alexa no muestra gráficas para sitios por debajo de 10000 en el ranking global.</p>
+{% else %}
+	<div class="row">
+		<div class="col-md-6 text-center">
+			{{ dailyTrafficTrendGraph | raw }}
+		</div>
+		<div class="col-md-6 text-center">
+			{{ dailyPageViewsPercentGraph | raw }}
+		</div>	
+	</div>	
+	<div class="row">
+		<div class="col-md-6 text-center">
+			{{ dailyPageViewsPerUserGraph | raw }}
+		</div>
+		<div class="col-md-6 text-center">
+			{{ timeOnSiteGraph | raw }}
+		</div>	
+	</div>
+	<div class="row">
+		<div class="col-md-6 text-center">
+			{{ bounceRatePercentGraph | raw }}
+		</div>
+		<div class="col-md-6 text-center">
+			{{ searchVisitsGraph | raw }}
+		</div>	
+	</div>	
+{% endif %}
+{% endblock %}

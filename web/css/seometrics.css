@@ -1,0 +1,14 @@
+@media all{
+	footer {
+  		background-color: #F5F5F5;
+  		bottom: 0;
+  		height: 60px;
+  		width: 100%;
+  		padding-top:20px;
+		margin-top:20px;
+	}
+
+	.resultados-serp{
+		margin-top:20px;
+	}
+}

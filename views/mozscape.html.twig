@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+	<h2 class="page-header">Rankings</h2>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>MOZ Rank</th>
+				<th>MOZ Rank (Raw)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>{{ mozRank }}</td>
+				<td>{{ mozRankRaw }}</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<h2 class="page-header">Links</h2>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Link Count</th>
+				<th>Equity Link Count</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>{{ linkCount }}</td>
+				<td>{{ equityLinkCount }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<h2 class="page-header">Authorities</h2>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Page Authority</th><th>Domain Authority</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>{{ pageAuthority }}</td>
+				<td>{{ domainAuthority }}</td>
+			</tr>
+		</tbody>
+	</table>	
+{% endblock %}
