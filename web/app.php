@@ -22,8 +22,8 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
         'driver'    => 'pdo_mysql',
         'host'      => 'localhost',
         'dbname'    => 'seometrics',
-        'user'      => 'root',
-        'password'  => 'pro1solutions19',
+        'user'      => '',
+        'password'  => '',
         'charset'   => 'utf8',
 	)
 ));
